@@ -2,7 +2,20 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('my test', {
+
+
+	
   refresh: function(frm) {
+
+refresh: function(frm) {
+         frm.set_query('customer_method', function() {
+			return {
+				query: 'myapp.myapp.doctype.testapp.test.myquery_method'}
+		});
+
+
+
+	  
 	frm.set_query('Supplier', function() {
   return {
     filters: {
