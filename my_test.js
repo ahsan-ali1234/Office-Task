@@ -1,21 +1,29 @@
-// Copyright (c) 2023, me and contributors
-// For license information, please see license.txt
-
 frappe.ui.form.on('my test', {
+    validate: function(frm) {
+        var dateValue = frm.doc.date; 
+        if (dateValue) {
+            frm.set_df_property('name1', 'hidden', 1);
+            refresh_field('name1');
+        }
+
+       var supplier = frm.doc.supplier; 
+        if (supplier) {
+            frm.set_df_property('name1', 'hidden', 0);
+            refresh_field('name1');
+        }
+
+        var schoolValue = frm.doc.school; 
+        var classValue = frm.doc.class; 
+
+        if (schoolValue && !classValue) {
+            frappe.msgprint('Please select a class.'); 
+            validated = false; 
+        }
+    },
 
 
-	
+ 
   refresh: function(frm) {
-
-refresh: function(frm) {
-         frm.set_query('mySupplier', function() {
-			return {
-				query: 'myapp.myapp.doctype.testapp.test.my_method'}
-		});
-
-
-
-	  
 	frm.set_query('Supplier', function() {
   return {
     filters: {
@@ -62,6 +70,11 @@ refresh: function(frm) {
     });
 	
   }
-});
 
 
+   },
+
+ 
+       
+    
+);
