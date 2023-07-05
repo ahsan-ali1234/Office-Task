@@ -8,7 +8,7 @@ frappe.ui.form.on('my test', {
   refresh: function(frm) {
 
 refresh: function(frm) {
-         frm.set_query('customer_method', function() {
+         frm.set_query('mySupplier', function() {
 			return {
 				query: 'myapp.myapp.doctype.testapp.test.myquery_method'}
 		});
